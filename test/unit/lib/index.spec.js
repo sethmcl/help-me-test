@@ -60,6 +60,25 @@ describe('Help Me Test', function () {
     });
   });
 
+  describe('proxy()', function () {
+    beforeEach(function () {
+      h.testRoot = path.resolve(__dirname, '..', '..', 'fixtures', 'fake_test_root');
+    });
+
+    it('should require the correct child module', function () {
+      assert.strictEqual(h.proxy('one')(), 1);
+    });
+
+    it('should require the correct descendant module', function () {
+      assert.strictEqual(h.proxy('sub', 'two')()(), 2);
+    });
+
+    it('should require the correct child module with the correct mock', function () {
+      var module = h.proxy('sub', 'three')({ 'fs': 45 });
+      assert.strictEqual(module.myFs, 45);
+    });
+  });
+
   describe('mock()', function () {
     it('should require the correct child module', function () {
       assert.strictEqual(h.mock('mock'), 333);

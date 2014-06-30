@@ -8,7 +8,8 @@
     "test": "./node_modules/.bin/grunt && cat ./coverage/unit/lcov.info|./node_modules/.bin/coveralls"
   },
   "dependencies": {
-    "sinon": "~1.10.2"
+    "sinon": "~1.10.2",
+    "proxyquire": "~1.0.1"
   },
   "devDependencies": {
     "sinon": "~1.10.2",
