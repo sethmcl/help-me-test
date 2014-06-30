@@ -25,6 +25,7 @@
     "mocha": "~1.18.2",
     "coveralls": "~2.10.0",
     "mocha-lcov-reporter": "0.0.1",
-    "grunt-cli": "~0.1.13"
+    "grunt-cli": "~0.1.13",
+    "grunt-release": "~0.7.0"
   }
 }
