@@ -2,7 +2,7 @@ var index  = require('../../../lib');
 var assert = require('assert');
 var path   = require('path');
 
-describe('Help Me Test', function () {
+describe('help-me-test', function () {
   var h;
 
   beforeEach(function () {
@@ -46,7 +46,18 @@ describe('Help Me Test', function () {
     });
   });
 
-  describe('lib()', function () {
+  describe('#module()', function () {
+    beforeEach(function () {
+      h.testRoot = path.resolve(__dirname, '..', '..', 'fixtures', 'fake_test_root');
+      h.projectRoot = path.resolve(h.testRoot, '..');
+    });
+
+    it('should have the correct path', function () {
+      assert.strictEqual(h.module('lib', 'one'), 1);
+    });
+  });
+
+  describe('#lib()', function () {
     beforeEach(function () {
       h.testRoot = path.resolve(__dirname, '..', '..', 'fixtures', 'fake_test_root');
     });
@@ -60,7 +71,7 @@ describe('Help Me Test', function () {
     });
   });
 
-  describe('proxy()', function () {
+  describe('#proxy()', function () {
     beforeEach(function () {
       h.testRoot = path.resolve(__dirname, '..', '..', 'fixtures', 'fake_test_root');
     });
@@ -79,7 +90,7 @@ describe('Help Me Test', function () {
     });
   });
 
-  describe('mock()', function () {
+  describe('#mock()', function () {
     it('should require the correct child module', function () {
       assert.strictEqual(h.mock('mock'), 333);
     });
@@ -89,7 +100,7 @@ describe('Help Me Test', function () {
     });
   });
 
-  describe('fixture()', function () {
+  describe('#fixture()', function () {
     it('should read the correct child file', function () {
       assert.strictEqual(h.fixture('foo.sh'), 'abracadabra\n');
     });
@@ -99,19 +110,19 @@ describe('Help Me Test', function () {
     });
   });
 
-  describe('path()', function () {
+  describe('#path()', function () {
     it('should build the correct path', function () {
       assert.equal(h.path('foo'), path.resolve(__dirname, '..', '..', 'foo'));
     });
   });
 
-  describe('assert', function () {
+  describe('#assert()', function () {
     it('should be a function', function () {
       assert.equal(typeof h.assert, 'function');
     });
   });
 
-  describe('spy', function () {
+  describe('#spy()', function () {
     it('should be a functional sinon spy', function () {
       var spy = h.spy();
 
